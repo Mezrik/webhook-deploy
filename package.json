@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Mezrik/webhook-deploy/issues"
   },
-  "homepage": "https://github.com/Mezrik/webhook-deploy#readme"
+  "homepage": "https://github.com/Mezrik/webhook-deploy#readme",
+  "dependencies": {
+    "dotenv-extended": "^2.9.0"
+  }
 }
