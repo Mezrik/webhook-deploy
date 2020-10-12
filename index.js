@@ -1,11 +1,10 @@
 const http = require("http");
 const crypto = require("crypto");
-
+const exec = require("child_process").exec;
 const config = require("dotenv-extended").load({
   errorOnMissing: true,
   errorOnRegex: true,
 });
-const runBuild = require("./exec");
 
 const server = http.createServer();
 
@@ -26,7 +25,8 @@ server.on("request", (request, response) => {
         .update(chunk.toString())
         .digest("hex");
 
-    if (request.headers["x-hub-signature"] == signature) runBuild();
+    if (request.headers["x-hub-signature"] == signature) {
+    }
   });
 
   response.end();
