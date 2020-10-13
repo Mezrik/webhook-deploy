@@ -22,4 +22,4 @@ sync
 
 
 # Cleanup
-find . -not -path './node_modules/*' -o -not -name "package-lock.json" -exec rm -r {} +
+find . -not \( -path './node_modules/*' -or -path './node_modules' -or -name 'package-lock.json' \) -print0 | xargs -0 -I {} rm -rf {}
