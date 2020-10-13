@@ -22,7 +22,7 @@ sync
 
 # Build application
 npm run $BUILD_SCRIPT || (cleanup && exit 1)
-syncs
+sync
 
 rsync -raz ./build "../$REPOSITORY_LOCATION"
 

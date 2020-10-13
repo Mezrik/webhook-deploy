@@ -28,10 +28,12 @@ server.on("request", (request, response) => {
     if (request.headers["x-hub-signature"] == signature) {
       console.log(`
         Event "${request.headers["x-github-event"]}":
-          Perfrom build of "${config.REPOSITORY_LOCATION}" application and deploy it.
+          Perfrom build of "${
+            config.REPOSITORY_LOCATION
+          }" application and deploy it.
           Additional info:
           ========================================================================
-          ${chunk}
+          ${JSON.stringify(chunk, null, 4)}
       `);
 
       exec("bash build.sh", (error, stdout, stderr) => {
