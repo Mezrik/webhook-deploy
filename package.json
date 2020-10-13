@@ -4,7 +4,13 @@
   "description": "Simple webhook deploy script",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pm2 start index.js --name webhook-deploy --max-memory-restart 50M --restart-delay 10000 --time --log ./logs/pm2.log",
+    "status": "pm2 status",
+    "restart": "pm2 restart webhook-deploy",
+    "stop": "pm2 stop webhook-deploy",
+    "delete": "pm2 delete webhook-deploy",
+    "logs": "pm2 logs"
   },
   "repository": {
     "type": "git",
@@ -17,6 +23,7 @@
   },
   "homepage": "https://github.com/Mezrik/webhook-deploy#readme",
   "dependencies": {
-    "dotenv-extended": "^2.9.0"
+    "dotenv-extended": "^2.9.0",
+    "pm2": "^4.5.0"
   }
 }
