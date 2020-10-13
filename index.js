@@ -27,9 +27,13 @@ server.on("request", (request, response) => {
 
     if (request.headers["x-hub-signature"] == signature) {
       console.log(`
-        Event "${request.headers["x-github-event"]}" in "${request.chunk.repository["full_name"]}" repository:
+        Event "${request.headers["x-github-event"]}" in "${chunk.repository["full_name"]}" repository:
           Perfrom build of "${config.REPOSITORY_LOCATION}" application and deploy it.
+          Additional info:
+          ========================================================================
+          ${chunk}
       `);
+
       exec("bash build.sh", (error, stdout, stderr) => {
         console.log(`stdout: ${stdout}`);
         console.log(`stderr: ${stderr}`);
