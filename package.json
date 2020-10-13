@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2 start index.js --name webhook-deploy --max-memory-restart 50M --restart-delay 10000 --time --log ./logs/pm2.log",
+    "start": "pm2 start index.js --name webhook-deploy --max-memory-restart 50M --restart-delay 10000 --time --log ./logs/server.log",
     "status": "pm2 status",
     "restart": "pm2 restart webhook-deploy",
     "stop": "pm2 stop webhook-deploy",
