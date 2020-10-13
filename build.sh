@@ -17,7 +17,7 @@ mkdir -p repository
 rsync --ignore-existing -raz --exclude 'node_modules' --exclude '.git' --exclude 'package-lock.json' $REPOSITORY_LOCATION ./repository
 sync
 pushd ./repository
-npm install
+npm install --unsafe-perm
 sync
 
 # Build application

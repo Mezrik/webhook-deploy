@@ -40,6 +40,7 @@ server.on("request", (request, response) => {
         console.log(`stdout: ${stdout}`);
         console.log(`stderr: ${stderr}`);
         if (error !== null) {
+          response.writeHead(500);
           console.log(`exec error: ${error}`);
         } else {
           console.log(`Build completed successfully.`);
