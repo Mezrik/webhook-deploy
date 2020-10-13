@@ -2,6 +2,10 @@
 
 export $(grep -v '^#' .env | xargs)
 
+function cleanup() {
+  find . -not \( -path './node_modules/*' -or -path './node_modules' -or -name 'package-lock.json' \) -print0 | xargs -0 -I {} rm -rf {} 
+}
+
 # Pull new changes in repository
 pushd $REPOSITORY_LOCATION 
 git checkout master && git pull --ff-only $REMOTE_ORIGIN master
@@ -16,10 +20,10 @@ pushd ./repository
 npm install
 sync
 
-# # Build application
-# npm run $BUILD_SCRIPT
-# sync
+# Build application
+npm run $BUILD_SCRIPT || (cleanup && exit 1)
+syncs
 
+rsync -raz ./build "../$REPOSITORY_LOCATION"
 
-# Cleanup
-find . -not \( -path './node_modules/*' -or -path './node_modules' -or -name 'package-lock.json' \) -print0 | xargs -0 -I {} rm -rf {}
+cleanup
