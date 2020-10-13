@@ -1,4 +1,5 @@
-pre#!/bin/bash
+#!/bin/bash
+
 LOG_SEPARATOR="------------------------------------------"
 STARTUP_LOG_LOCATION=./logs/startup.log
 
